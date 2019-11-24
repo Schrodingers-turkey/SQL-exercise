@@ -58,8 +58,16 @@
 from Employees a join Departments b
 on a.department = b.code;
 -- 2.12 Select the name and last name of employees working for departments with a budget greater than $60,000.
+  select name,lastname
+  from Employees
+  where department in ( select code from Departments where budget > 60000)
+  ;
 -- 2.13 Select the departments with a budget larger than the average budget of all the departments.
+  select * from Departments
+  where budget > (select avg(budget) from Departments)
+  ;
 -- 2.14 Select the names of departments with more than two employees.
+
 -- 2.15 Very Important - Select the name and last name of employees working for departments with second lowest budget.
 -- 2.16  Add a new department called "Quality Assurance", with a budget of $40,000 and departmental code 11. 
 -- And Add an employee called "Mary Moore" in that department, with SSN 847-21-9811.
