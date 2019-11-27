@@ -118,5 +118,10 @@ WHERE e.Department = (
 -- 2.19 Delete from the table all employees in the IT department (code 14).
   delete from Employees where department = 14;
 -- 2.20 Delete from the table all employees who work in departments with a budget greater than or equal to $60,000.
-  delete 
+  delete from Employees
+  where department in (
+      select code from Departments 
+      where budget >= 60000
+  );
 -- 2.21 Delete from the table all employees.
+  delete from Employees;
